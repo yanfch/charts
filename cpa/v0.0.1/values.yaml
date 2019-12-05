@@ -14,18 +14,18 @@ fullnameOverride: ""
 
 service:
   name: cpa-svc
-  type: NodePort
+  type: ClusterIP
   port: 9999
-  nodePort: 31999
+  # nodePort: 31999
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: appdev.mochasoft.com.cn
-      paths: ["/cpa"]
+      paths: ["/cpa-server"]
 
   tls: []
   #  - secretName: chart-example-tls
@@ -50,7 +50,7 @@ tolerations: []
 
 affinity: {}
 
-contextPath: /cpa
+contextPath: /cpa-server
 
 elasticsearch:
   enabled: true
